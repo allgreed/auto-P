@@ -25,6 +25,10 @@ def main():
     for amount in currency_amounts:
         currencies.add((amount.lstrip().split(" ")[1]))
 
+    # 31/08/2023: for some time now LEV has a fixed exchange rate with EUR, so 
+    # you only have to input it once
+    currencies.disacard("LEV")  
+
     default_currency = sys.argv[1]
     desired_currencies = currencies.union(HARDCODED).difference({GLOBAL_RESERVE_CURRENCY})
 
