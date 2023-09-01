@@ -27,7 +27,8 @@ def main():
 
     # 31/08/2023: for some time now LEV has a fixed exchange rate with EUR, so 
     # you only have to input it once
-    currencies.disacard("LEV")  
+    # P 2023/08/31 EUR 1.95583 LEV
+    currencies.discard("LEV")  
 
     default_currency = sys.argv[1]
     desired_currencies = currencies.union(HARDCODED).difference({GLOBAL_RESERVE_CURRENCY})
