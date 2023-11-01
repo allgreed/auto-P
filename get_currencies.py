@@ -12,17 +12,12 @@ HARDCODED = {GLOBAL_RESERVE_CURRENCY}
 def main():
     raw_data = sys.stdin.readlines()
 
-    for line in raw_data:
-        if "Net:" in line:
-            the_line = line
-            break
-    else:
-        raise RuntimeError("Couldn't find Net:")
+    *_, net = csv.reader(raw_data)
+    assert net[0] == "Net:"
 
-    currencies_info = the_line.split('"')[3]
-    currency_amounts = currencies_info.split(",")
+    currencies_with_ammounts = net[1].split(",")
     currencies = set()
-    for amount in currency_amounts:
+    for amount in currencies_with_ammounts:
         currencies.add((amount.lstrip().split(" ")[1]))
 
     # 31/08/2023: for some time now LEV has a fixed exchange rate with EUR, so 
