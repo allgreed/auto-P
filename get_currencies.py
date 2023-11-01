@@ -20,9 +20,9 @@ def main():
     for amount in currencies_with_ammounts:
         curency = (amount.lstrip().split(" ")[1]).strip('"')
 
-        # Use NOMARKET: to designate no price fetching for this currency
-        # since it's not being offered on the free market
-        if curency.startswith("NOMARKET:"):
+        # Use OTC: to designate no price fetching for this currency
+        # since it's not being offered on the open market
+        if curency.startswith("OTC:"):
             continue
         
         currencies.add(curency)
