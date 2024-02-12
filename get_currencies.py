@@ -24,6 +24,10 @@ def main():
         # since it's not being offered on the open market
         if curency.startswith("OTC:"):
             continue
+
+        # this is an 2024 February experiment with counting bills directly
+        if curency.startswith("PLN:"):
+            continue
         
         currencies.add(curency)
 
