@@ -11,6 +11,7 @@ EXCHANGE_CONVERSION_TABLE = {
     "XET": ".DE",
     "NYSEARCA": "",
     "NYSE": "",
+    "NDQ": "",
     "WSE": ".WA",
 }
 
