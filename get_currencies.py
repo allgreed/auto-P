@@ -1,10 +1,10 @@
-import sys
 import csv
-import functools
 import datetime
+import sys
 
-from acquire_quote import to_yahoo_ticker, acquire_yahoo_quote
+import requests
 
+from acquire_quote import acquire_yahoo_quote, to_yahoo_ticker
 
 GLOBAL_RESERVE_CURRENCY = "USD"
 HARDCODED = {GLOBAL_RESERVE_CURRENCY}
@@ -40,9 +40,11 @@ def main():
     desired_currencies = currencies.union(HARDCODED).difference({GLOBAL_RESERVE_CURRENCY})
 
     today = str(datetime.datetime.now().date()).replace("-", "/")
+    s = requests.Session()
+
     for c in desired_currencies:
         try:
-            p = acquire_yahoo_quote(to_yahoo_ticker(c))
+            p = acquire_yahoo_quote(to_yahoo_ticker(c), requests_f=s.get)
         except KeyError:
             p = f"!_WPISZ_TUTAJ_CENĘ_! {GLOBAL_RESERVE_CURRENCY}"
 

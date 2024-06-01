@@ -1,6 +1,3 @@
-import requests
-
-
 CUSTOM_YAHOO_TICKER_TABLE = {
     "PLN": "PLNUSD=X",
     "EUR": "EURUSD=X",
@@ -16,7 +13,8 @@ EXCHANGE_CONVERSION_TABLE = {
 }
 
 def main():
-    p = acquire_yahoo_quote("DAX.DE")
+    import requests
+    p = acquire_yahoo_quote("DAX.DE", requests_f=requests)
     print(p)
 
 
@@ -33,7 +31,8 @@ def to_yahoo_ticker(ticker):
         return f"{t}{suffix}"
 
 
-def acquire_yahoo_quote(yahoo_ticker, requests_f=requests.get) -> str:
+def acquire_yahoo_quote(yahoo_ticker, requests_f) -> str:
+    # TODO: use Session!
     q = f"https://query1.finance.yahoo.com/v8/finance/chart/{str(yahoo_ticker)}?region=US&lang=en-US&includePrePost=false&interval=2m&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
     h = {'User-Agent': 'twoj-stary/1.6.9', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'}
     r = requests_f(q, headers=h)
