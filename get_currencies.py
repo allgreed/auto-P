@@ -41,6 +41,9 @@ def main():
 
     today = str(datetime.datetime.now().date()).replace("-", "/")
     s = requests.Session()
+    s.hooks = {
+        'response': lambda r, *_args, **_kwargs: r.raise_for_status()
+    }
 
     for c in desired_currencies:
         try:
