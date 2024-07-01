@@ -6,7 +6,7 @@ CUSTOM_YAHOO_TICKER_TABLE = {
 
 EXCHANGE_CONVERSION_TABLE = {
     "XET": ".DE",
-    "NYSEARCA": "",
+    "ARCA": "",
     "NYSE": "",
     "NDQ": "",
     "WSE": ".WA",
