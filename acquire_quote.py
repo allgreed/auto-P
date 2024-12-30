@@ -1,6 +1,7 @@
 CUSTOM_YAHOO_TICKER_TABLE = {
     "PLN": "PLNUSD=X",
     "EUR": "EURUSD=X",
+    "CHF": "CHFUSD=X",
     "ETH": "ETH-USD",
 }
 
