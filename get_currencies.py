@@ -4,7 +4,7 @@ import sys
 
 import requests
 
-from acquire_quote import acquire_yahoo_quote, to_yahoo_ticker
+from acquire_quote import acquire_yahoo_quote, to_yahoo_ticker, UnsupportedTicker, ble
 
 GLOBAL_RESERVE_CURRENCY = "USD"
 HARDCODED = {GLOBAL_RESERVE_CURRENCY}
@@ -48,8 +48,11 @@ def main():
     for c in desired_currencies:
         try:
             p = acquire_yahoo_quote(to_yahoo_ticker(c), requests_f=s.get)
-        except KeyError:
-            p = f"!_WPISZ_TUTAJ_CENĘ_! {GLOBAL_RESERVE_CURRENCY}"
+        except UnsupportedTicker:
+            try:
+                p = ble(c, requests_f=s.get)
+            except UnsupportedTicker:
+                p = f"!_WPISZ_TUTAJ_CENĘ_! {GLOBAL_RESERVE_CURRENCY}"
 
         print(f"P {today} {c} {p}")
 
