@@ -39,6 +39,7 @@ def main():
     # feel free to implement fancy checking if LEV is desired and if the price is indeed in the ledger
     # ^ otherwise include the price in the final output
     # also: feel free to find out the exact date for setting the peg
+    # TODO: actually this check might be also usefull for OTC when doing a new ledger
     currencies.discard("LEV")  
 
     # TODO: make a workaround for default currency to use global reserve currency as a fallback
