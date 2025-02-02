@@ -33,6 +33,9 @@ def main():
         
         currencies.add(curency)
 
+    # price of 1 imperial unit it *always* 1 imperial unit
+    currencies.discard(GLOBAL_RESERVE_CURRENCY)  
+
     # 31/08/2023: for some time now LEV has a fixed exchange rate with EUR, so 
     # you only have to input it once
     # P 2023/08/31 EUR 1.95583 LEV

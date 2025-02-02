@@ -35,6 +35,11 @@ pkgs.stdenv.mkDerivation rec {
 
       myPython
       # this is a requirement
+
+      pyright
+      ruff
+      ruff-lsp
+      # this is for dev lol
     ];
   buildInputs = propagatedbuildInputs;
 }
