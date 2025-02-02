@@ -1,12 +1,11 @@
 let
-  nixpkgs = builtins.fetchGit {
-    url = "https://github.com/nixos/nixpkgs-channels/";
+  pkgs = import (builtins.fetchGit {
+    url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
-    rev = "4762fba469e2baa82f983b262e2c06ac2fdaae67"; # 7-03-2022
-    # obtain via `git ls-remote https://github.com/nixos/nixpkgs-channels nixos-unstable`
-  };
-  pkgs = import nixpkgs { config = {}; };
-  pythonCore = pkgs.python38;
+    rev = "76612b17c0ce71689921ca12d9ffdc9c23ce40b2"; # 13-11-2024
+    # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
+  }) { config = {}; };
+  pythonCore = pkgs.python312;
   pythonPkgs = python-packages: with python-packages; [
       ptpython
       requests
